@@ -7,7 +7,7 @@
         <meta name=description content="">
         <meta name=author content="">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Adminpage - Responsive Bootstrap Admin Template Dashboard</title>
+        <title>Logico</title>
         <link rel="shortcut icon" href="assets/dist/img/ico/favicon.png" type="image/x-icon">
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
         <script>
@@ -42,7 +42,7 @@
                         <span class=sr-only>Toggle navigation</span>
                         <i class=material-icons>apps</i>
                     </button>
-                    <a class=navbar-brand href=index.html>
+                        <a class=navbar-brand href="{{route('home')}}">
                         <img class=main-logo src="{{asset('icono/Negativo.png')}}" alt="">
                     </a>
                 </div>
@@ -115,7 +115,9 @@
          <div id=page-wrapper>
                
             
-
+         
+        			@include('partial.errores')
+        			@include('partial.success')
 
                 @yield('content')
             </div>
@@ -129,7 +131,7 @@
         <script src="{{asset('template/assets/plugins/animsition/js/animsition.min.js')}}"></script>
         <script src="{{asset('template/assets/plugins/fastclick/fastclick.min.js')}}"></script>
         <script src="{{asset('template/assets/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
-        <script src="{{asset('template/assets/plugins/toastr/toastr.min.js')}}"></script>
+        {{-- <script src="{{asset('template/assets/plugins/toastr/toastr.min.js')}}"></script> --}}
         <script src="{{asset('template/assets/plugins/sparkline/sparkline.min.js')}}"></script>
         <script src="{{asset('template/assets/plugins/counterup/jquery.counterup.min.js')}}"></script>
         <script src="{{asset('template/assets/plugins/counterup/waypoints.js')}}"></script>

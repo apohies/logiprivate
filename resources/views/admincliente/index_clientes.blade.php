@@ -1,4 +1,6 @@
 @extends('layouts.general')
+
+
 @section('content')
 
 <div class=content>
@@ -15,7 +17,7 @@
 		</div>
 	</div>
 </div>
-<!-- Inicio Vista principal -->
+
 
 <div class="col-sm-6">
 	<button type="button"  id="add" class="btn btn-success btn-rounded w-md m-b-5">Crear Cliente</button>

@@ -35,3 +35,9 @@ Route::group(['prefix'=>'gestion','namespace'=>'Administracion','middleware'=>'a
     route::get('gestionar/cliente/{admincliente}','AdminclienteController@adminCliente_modulos')->name('admincliente.adminCliente_modulos');
     route::post('modulo/cliente/{admincliente}','AdminclienteController@admincliente_storemodulos')->name('admincliente.admincliente_storemodulos');    
 });
+
+Route::group(['prefix'=>'centros','namespace'=>'CentroCostos','middleware'=>'auth'], function(){ 
+    route::get('/ver','CentroCostosController@index')->name('centros.index'); 
+    route::post('/crear','CentroCostosController@store')->name('centros.store'); 
+
+});

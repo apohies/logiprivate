@@ -48,9 +48,14 @@ class AdminPolicy
 
    // PERMISOS PARA ADMINISTRADOR.
 
-   public function ver_unidad(User $user,Admincliente $admincliente )
+   public function ver_centro(User $user,Admincliente $admincliente )
    {
-        return $user->hasPermissionTo('Ver UnidadTrabajo');
+        return $user->hasPermissionTo('Ver CentroCostos');
+   }
+
+   public function crear_centro(User $user,Admincliente $admincliente )
+   {
+        return $user->hasPermissionTo('Crear CentroCostos');
    }
 
    

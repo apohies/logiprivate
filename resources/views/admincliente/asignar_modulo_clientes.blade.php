@@ -3,6 +3,20 @@
 @section('content')
 
 
+<div class=content>
+	<div class=content-header>
+		<div class=header-icon>
+			<i class=pe-7s-tools></i>
+		</div>
+		<div class=header-title>
+			<h1>Administracion</h1>
+			<ol class=breadcrumb>
+				<li><a href="{{route('home')}}"><i class=pe-7s-home></i> Clientes</a></li>
+				<li class=active>Lista Clientes</li>
+			</ol>
+		</div>
+	</div>
+</div>
 
 
 <div class="panel panel-bd lobidisable">

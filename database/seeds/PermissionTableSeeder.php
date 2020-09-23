@@ -25,8 +25,8 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'Crear Admincliente','display_name' =>'Crear','modulo_id'=>2]);
         Permission::create(['name' => 'Editar Admincliente','display_name' =>'Editar','modulo_id'=>2]);
         Permission::create(['name' => 'Eliminar Admincliente','display_name' =>'Eliminar','modulo_id'=>2]);
-        Permission::create(['name' => 'Ver UnidadTrabajo','display_name' =>'Ver unidad','modulo_id'=>2]);
-        Permission::create(['name' => 'Crear UnidadTrabajo','display_name' =>'Crear unidad','modulo_id'=>2]);
+        Permission::create(['name' => 'Ver CentroCostos','display_name' =>'Ver unidad','modulo_id'=>2]);
+        Permission::create(['name' => 'Crear CentroCostos','display_name' =>'Crear unidad','modulo_id'=>2]);
 
 
         Permission::create(['name' => 'Ver Test','display_name' =>'Ver','modulo_id'=>3]);
