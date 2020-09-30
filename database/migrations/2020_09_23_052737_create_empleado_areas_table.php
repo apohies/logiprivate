@@ -14,8 +14,15 @@ class CreateEmpleadoAreasTable extends Migration
     public function up()
     {
         Schema::create('empleado_areas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->unsignedInteger('empleado_id');
+            $table->unsignedInteger('area_id');
+            $table->enum('estado',['activo','desactivo'])->default('activo');
             $table->timestamps();
+
+            $table->foreign('empleado_id')->references('id')->on('empleado_clientes');
+            $table->foreign('area_id')->references('id')->on('areas');
+
         });
     }
 

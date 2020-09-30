@@ -20,3 +20,10 @@
         </ul>
     <li>
 @endcan   
+
+<li>
+    <a href="2" class=material-ripple><i class="material-icons" style="color:#3d3fc4;">business</i> Unidad Negocios<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="{{route('unidadnegocio.index')}}"> Ver Unidades</a></li>
+    </ul>
+<li>

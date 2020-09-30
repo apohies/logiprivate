@@ -14,8 +14,14 @@ class CreateAreasTable extends Migration
     public function up()
     {
         Schema::create('areas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('nombreArea');
+            $table->string('descripcionArea');
+            $table->enum('estado',['activo','desactivo'])->default('desactivo');
+            $table->unsignedInteger('dependencia_id');
             $table->timestamps();
+
+            $table->foreign('dependencia_id')->references('id')->on('dependencias');
         });
     }
 

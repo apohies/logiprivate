@@ -14,8 +14,15 @@ class CreateDependenciasTable extends Migration
     public function up()
     {
         Schema::create('dependencias', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('nombreDependencia');
+            $table->string('descripcionDependencia');
+            $table->enum('estado',['activo','desactivo'])->default('desactivo');
+            $table->unsignedInteger('unidad_negocios_id');
+            //$table->string('codigo');
             $table->timestamps();
+            
+            $table->foreign('unidad_negocios_id')->references('id')->on('unidad_negocios');
         });
     }
 

@@ -18,6 +18,7 @@ class CreateUnidadNegociosTable extends Migration
             $table->string('unidadNegocio');
             $table->string('direccionNegocio');
             $table->enum('estado',['activo','desactivo'])->default('desactivo');
+            $table->string('unidadCodigo')->nullable();
             $table->unsignedInteger('admincliente_id');
             $table->timestamps();
 

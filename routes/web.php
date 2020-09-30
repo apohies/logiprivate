@@ -41,3 +41,21 @@ Route::group(['prefix'=>'centros','namespace'=>'CentroCostos','middleware'=>'aut
     route::post('/crear','CentroCostosController@store')->name('centros.store'); 
 
 });
+
+
+Route::group(['prefix'=>'unidadnegocio','namespace'=>'UnidadNegocio'], function(){
+
+    Route::get('/index','UnidadNegocioController@index')->name("unidadnegocio.index"); 
+    Route::get('/index/asignados','UnidadNegocioController@indexAreActural')->name("unidadnegocio.indexAreActural"); 
+    Route::post('/create','UnidadNegocioController@store')->name("unidadnegocio.store"); 
+    Route::get('/gestion/{unidad}','UnidadNegocioController@gestionarUnidad')->name("unidadnegocio.gestion");
+    Route::post('/create/area/{dependencia}','UnidadNegocioController@storeArea');
+    Route::post('/create/dependencia/{unidadNegocio}','UnidadNegocioController@storeDependencia');
+    Route::post('/create/asignacionarea/{area}','UnidadNegocioController@asignacionEmpleado');
+
+   // ajax
+   Route::get('/unidad/dependencia/{unidad}','UnidadNegocioController@dependenciaUnidad');
+   Route::get('/dependencia/area/{area}','UnidadNegocioController@AreaDepedencia');
+   Route::post('/asignar/area/grupal','UnidadNegocioController@asignacionGrupalEmpleados')->name("unidadnegocio.asignacionGrupalEmpleados");
+
+});
