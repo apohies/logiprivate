@@ -59,3 +59,24 @@ Route::group(['prefix'=>'unidadnegocio','namespace'=>'UnidadNegocio'], function(
    Route::post('/asignar/area/grupal','UnidadNegocioController@asignacionGrupalEmpleados')->name("unidadnegocio.asignacionGrupalEmpleados");
 
 });
+
+Route::group(['prefix'=>'empleados','namespace'=>'GestionUsuarios','middleware'=>'auth'], function(){ 
+
+    route::get('/ver/roles','RolesAdminClienteController@index')->name('rolesCliente.index');
+    route::get('/crear/roles','RolesAdminClienteController@create')->name('rolesCliente.create');
+    route::post('/almacenarrole','RolesAdminClienteController@store')->name('rolesCliente.store');
+    route::get('/editar/{role}','RolesAdminClienteController@edit')->name('rolesCliente.edit');
+    route::post('/actualizar/{role}','RolesAdminClienteController@update')->name('rolesCliente.update');
+
+
+    route::get('/cliente','EmpleadosAdminClienteController@index')->name('empleadosadmincliente.index');
+    route::get('/cliente/crear','EmpleadosAdminClienteController@create')->name('empleadosadmincliente.create');
+    route::get('/cliente/ver/{id}','EmpleadosAdminClienteController@show')->name('empleadosadmincliente.show');
+    route::post('/cliente/store','EmpleadosAdminClienteController@store')->name('empleadosadmincliente.store');
+    route::get('/cliente/crear/anexo/{empleado}','EmpleadosAdminClienteController@createAnexo')->name('empleadosadmincliente.createAnexo');
+    
+    route::post('/cliente/update/{id}','EmpleadosAdminClienteController@update')->name('empleadosadmincliente.update');
+    route::post('/cliente/borrar/{user}','EmpleadosAdminClienteController@destroy')->name('empleadosadmincliente.destroy');
+
+
+});

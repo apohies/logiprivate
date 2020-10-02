@@ -27,3 +27,19 @@
         <li><a href="{{route('unidadnegocio.index')}}"> Ver Unidades</a></li>
     </ul>
 <li>
+
+    <li>
+        <a href="2" class=material-ripple><i class="material-icons" style="color:#3d3fc4;">business</i> Procesos contractuales<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li><a href="{{route('empleadosadmincliente.create')}}"> Procesos Contractuales</a></li>
+        </ul>
+    <li>
+
+    <li>
+        <a href="2" class=material-ripple><i class="material-icons" style="color:#3d3fc4;">business</i> Empleados<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li><a href="{{route('empleadosadmincliente.create')}}"> Crear Empleado</a></li>
+        </ul>
+    <li>
+
+       

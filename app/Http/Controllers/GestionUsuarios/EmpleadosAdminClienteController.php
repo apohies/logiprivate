@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Administracion\EmpleadoCliente;
 
+
 class EmpleadosAdminClienteController extends Controller
 {
     public function index()
@@ -37,27 +38,51 @@ class EmpleadosAdminClienteController extends Controller
 
     public function create()
     {
-        //$admincliente = new Admincliente;
-        //$this->authorize('crear_admin', $admincliente);
+       
         $user=User::UserAuth(); 
-         $roles=Role::where('admincliente_id',$user->admincliente_id)->get();
-        
+        $tipodocumentos=DB::table('tipo_documentos')->get();
+        $paises=DB::table('pais')->get();
+        $departamentos=DB::table('departamentos')->get();
+        $estadociviles=DB::table('estado_civils')->get();
+        $rhs=DB::table('rhs')->get();
+         
+        return view('empleadoCliente.create_empleados',compact('roles','tipodocumentos','paises','departamentos','estadociviles','rhs','bancos','saluds','arls','pensiones'));
+    }
 
-        return view('empleadoCliente.create_empleados',compact('roles'));
+    public function createAnexo(EmpleadoCliente $empleado)
+    {
+        $user=User::UserAuth(); 
+
+        $bancos=DB::table('entidads')->where('tipoEntidad_id',1)->where('admincliente_id',$user->admincliente_id)->get();
+        $saluds=DB::table('entidads')->where('tipoEntidad_id',2)->where('admincliente_id',$user->admincliente_id)->get();
+        $arls=DB::table('entidads')->where('tipoEntidad_id',3)->where('admincliente_id',$user->admincliente_id)->get();
+        $pensiones=DB::table('entidads')->where('tipoEntidad_id',4)->where('admincliente_id',$user->admincliente_id)->get();
+
+        return view('empleadoCliente.anexo_empleado',compact('bancos','saluds','arls','pensiones'));
     }
 
    
     public function store(Request $request)
     {
-        //dd($request);
+      
         $credenciales=User::UserAuth();
         
         $validatedData = $request->validate([
-            'name' => 'required',
-            'apellido' => 'required',
-            'email'=> 'required|email',
-            'cargo'=>'required',
-            'roles'=>'required|array'],['name.required'=>'El campo nombre es requerido',
+            'name' =>'required',
+            'apellido' =>'required',
+            'email'=>'required|email',
+            'tipoIdentificacion'=>'required',
+            'numeroIdentificacion'=>'required',
+            'paisNacimiento'=>'required',
+            'departamentoNacimiento'=>'required',
+            'ciudadNacimiento'=>'required',
+            'departamentoResidencia'=>'required',
+            'ciudadResidencia'=>'required',
+            'direccionResidencia'=>'required',
+            'estadoCivil'=>'required',
+            'rh'=>'required',
+            'estatura'=>'required',
+            'hijos'=>'required',
             'apellido.required'=>'El campo apellido es requerido',
             'email.required'=>'El email es requerido',
             'email.email'=>'debe ser un email']);
@@ -70,18 +95,23 @@ class EmpleadosAdminClienteController extends Controller
         $user->save();
 
         $empleado=new EmpleadoCliente();
-        $empleado->cargo=$request->cargo;
+        $empleado->tipoDocumento_id=$request->tipoIdentificacion;
+        $empleado->numeroDocumento=$request->numeroIdentificacion;
+        $empleado->paisNacimiento_id=$request->paisNacimiento;
+        $empleado->departamentoNacimiento=$request->departamentoNacimiento;
+        $empleado->ciudadNacimiento=$request->ciudadNacimiento;
+        $empleado->departamentoResidencia_id=$request->departamentoResidencia;
+        $empleado->cuidadResidencia=$request->ciudadResidencia;
+        $empleado->direccionResidencia=$request->direccionResidencia;
+        $empleado->estadoCivil_id=$request->estadoCivil;
+        $empleado->rh_id=$request->rh;
+        $empleado->estatura=$request->estatura;
+        $empleado->hijos=$request->hijos;
         $empleado->user_id=$user->id;
         $empleado->admincliente_id=$credenciales->admincliente_id;
         $empleado->save();
 
-        $roles=Role::whereIn('id',$request->roles)->get();
-
-        $user->assignRole($roles);
-
-       // NotificacionModulo::dispatch($user);
-
-        return response()->json('creado');   
+       return redirect()->route('empleadosadmincliente.createAnexo',$empleado->id);
 
     }
 

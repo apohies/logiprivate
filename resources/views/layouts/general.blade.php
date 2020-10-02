@@ -115,7 +115,7 @@
          <div id=page-wrapper>
                
             
-         
+                   @include('partial.error')
         			@include('partial.errores')
         			@include('partial.success')
 
