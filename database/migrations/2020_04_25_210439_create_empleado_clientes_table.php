@@ -22,6 +22,7 @@ class CreateEmpleadoClientesTable extends Migration
             // private
 
             $table->unsignedInteger('tipoDocumento_id');
+            $table->string('fechaNacimiento');
             $table->string('numeroDocumento');
             $table->unsignedInteger('paisNacimiento_id');
             $table->string('departamentoNacimiento');

@@ -28,15 +28,22 @@
 
     <form  method="POST" action="{{route('empleadosadmincliente.store')}}">  
       <div class="row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-5">
             <label for="exampleInputEmail1">Nombres empleado <span style="color:red">*</span></label>
             <input type="text" class="form-control" name="name" required >
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <label for="exampleInputEmail1"> Apellido empleado <span style="color:red">*</span></label>
           <input type="text" class="form-control" name="apellido"  required >
       </div>
+
+      <div class="form-group col-md-3">
+        <label for="exampleInputEmail1"> Fecha Nacimiento <span style="color:red">*</span></label>
+        <input type="date" class="form-control" name="fechaNacimiento"  required >
+    </div>
+
+
     </div>
 
     <div class="row">
@@ -118,7 +125,7 @@
 
       <div class="form-group col-md-4">
         <label for="exampleInputEmail1"> Dirección Residencia <span style="color:red">*</span></label>
-        <input type="text" class="form-control" name="ciudadResidencia" aria-describedby="emailHelp" required>
+        <input type="text" class="form-control" name="direccionResidencia" aria-describedby="emailHelp" required>
       </div>
 
      
@@ -175,8 +182,8 @@
 				<label > Tipo cuenta  <span style="color:red">*</span></label>
 				<select class="form-control"  name="tipocuenta" required>
 				  <option  value=""  selected>Opcion</option>
-					<option value="ahorros"> Ahorros</option>
-					<option value="corriente"> Corriente</option>
+					<option value="Ahorros"> Ahorros</option>
+					<option value="Corriente"> Corriente</option>
 				</select>
 			  </div>
 

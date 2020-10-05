@@ -14,22 +14,27 @@ class tipocontratoTableSeeder extends Seeder
     {
          $contrato= new tipoContrato;
          $contrato->nombreTipocontrato="termino definido inferior a un año";
+         $contrato->descripcionTipocontrato="descripcion basica";
          $contrato->save();
 
          $contrato= new tipoContrato;
          $contrato->nombreTipocontrato="contrato termino indefinido";
+         $contrato->descripcionTipocontrato="descripcion basica";
          $contrato->save();
 
          $contrato= new tipoContrato;
          $contrato->nombreTipocontrato="contrato aprendizaje";
+         $contrato->descripcionTipocontrato="descripcion basica";
          $contrato->save();
 
          $contrato= new tipoContrato;
          $contrato->nombreTipocontrato="contrato prestacion de servicio";
+         $contrato->descripcionTipocontrato="descripcion basica";
          $contrato->save();
 
          $contrato= new tipoContrato;
          $contrato->nombreTipocontrato="contrato de practica";
+         $contrato->descripcionTipocontrato="descripcion basica";
          $contrato->save();
 
     }

@@ -12,6 +12,7 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Administracion\EmpleadoCliente;
+use App\Entidades\EmpleadoEntidad;
 
 
 class EmpleadosAdminClienteController extends Controller
@@ -72,6 +73,7 @@ class EmpleadosAdminClienteController extends Controller
             'name' =>'required',
             'apellido' =>'required',
             'email'=>'required|email',
+            'fechaNacimiento'=>'required',
             'tipoIdentificacion'=>'required',
             'numeroIdentificacion'=>'required',
             'paisNacimiento'=>'required',
@@ -98,6 +100,7 @@ class EmpleadosAdminClienteController extends Controller
         $empleado=new EmpleadoCliente();
         $empleado->tipoDocumento_id=$request->tipoIdentificacion;
         $empleado->numeroDocumento=$request->numeroIdentificacion;
+        $empleado->fechaNacimiento=$request->fechaNacimiento;
         $empleado->paisNacimiento_id=$request->paisNacimiento;
         $empleado->departamentoNacimiento=$request->departamentoNacimiento;
         $empleado->ciudadNacimiento=$request->ciudadNacimiento;
@@ -111,6 +114,13 @@ class EmpleadosAdminClienteController extends Controller
         $empleado->user_id=$user->id;
         $empleado->admincliente_id=$credenciales->admincliente_id;
         $empleado->save();
+
+        $entidadBancaria= new EmpleadoEntidad();
+        $entidaBancaria->empleado_id=$empleado->id;
+        $entidaBancaria->tipoEntidad_id=$request->banco;
+        $entidaBancaria->tipocuenta=$request->tipocuenta;
+        $entidaBancaria->numeroCuenta=$request->numeroCuenta;
+        $entidaBancaria->save();
 
        return redirect()->route('empleadosadmincliente.createAnexo',$empleado->id);
 

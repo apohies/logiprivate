@@ -80,3 +80,21 @@ Route::group(['prefix'=>'empleados','namespace'=>'GestionUsuarios','middleware'=
 
 
 });
+
+
+Route::group(['prefix'=>'contratacion','namespace'=>'Contratacion','middleware'=>'auth'], function(){ 
+
+   route::get('inicio','ContratosController@inicio')->name('contratacion.inicio');
+   route::get('contratos','ContratosController@indexTipocontrato')->name('contratacion.indexTipocontrato');
+   route::get('ver/contratos','ContratosController@indexContratos')->name('contratacion.indexContratos');
+   route::get('crear/contrato','ContratosController@createContrato')->name('contratacion.createContrato');
+   
+
+
+   // clausulas
+
+   route::get('clausulas','ContratosController@indexClausulas')->name('contratacion.indexClausulas');
+   route::get('crear','ContratosController@createClausula')->name('contratacion.createClausula');
+   route::post('store/clausula','ContratosController@storeClausula')->name('contratacion.storeClausula');
+   
+});

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RhTableSeeder::class);
         $this->call(TipoEntidadTableSeeder::class);
         $this->call(tipocontratoTableSeeder::class);
+        $this->call(ClausulasTableSeeder::class);
         
         
         // fin para metriacs
