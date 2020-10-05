@@ -116,7 +116,12 @@
         <input type="text" class="form-control" name="ciudadResidencia" aria-describedby="emailHelp" required>
       </div>
 
-     +
+      <div class="form-group col-md-4">
+        <label for="exampleInputEmail1"> Dirección Residencia <span style="color:red">*</span></label>
+        <input type="text" class="form-control" name="ciudadResidencia" aria-describedby="emailHelp" required>
+      </div>
+
+     
     </div>
 
     <div class="row">
@@ -154,6 +159,34 @@
 
 
     </div>
+
+    <div class="row">
+			<div class="form-group col-md-4">
+				<label > Entidad Bancaria  <span style="color:red">*</span></label>
+				<select class="form-control"  name="banco" required>
+				  <option  value=""  selected>Opcion</option>
+				  @foreach ($bancos as $item)
+					  <option value="{{$item->id}}">{{$item->nombreEntidad}}</option>
+				  @endforeach
+				</select>
+			  </div>
+
+			  <div class="form-group col-md-4">
+				<label > Tipo cuenta  <span style="color:red">*</span></label>
+				<select class="form-control"  name="tipocuenta" required>
+				  <option  value=""  selected>Opcion</option>
+					<option value="ahorros"> Ahorros</option>
+					<option value="corriente"> Corriente</option>
+				</select>
+			  </div>
+
+			  <div class="form-group col-md-4">
+				<label for="exampleInputEmail1"> Número Cuenta <span style="color:red">*</span></label>
+				<input type="text" class="form-control" name="numeroCuenta" aria-describedby="emailHelp" required>
+			</div>
+		
+
+		</div>
 
    
 	

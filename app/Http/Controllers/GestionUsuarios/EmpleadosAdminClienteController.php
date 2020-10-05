@@ -44,6 +44,7 @@ class EmpleadosAdminClienteController extends Controller
         $paises=DB::table('pais')->get();
         $departamentos=DB::table('departamentos')->get();
         $estadociviles=DB::table('estado_civils')->get();
+        $bancos=DB::table('entidads')->where('tipoEntidad_id',1)->where('admincliente_id',$user->admincliente_id)->get();
         $rhs=DB::table('rhs')->get();
          
         return view('empleadoCliente.create_empleados',compact('roles','tipodocumentos','paises','departamentos','estadociviles','rhs','bancos','saluds','arls','pensiones'));
@@ -53,7 +54,7 @@ class EmpleadosAdminClienteController extends Controller
     {
         $user=User::UserAuth(); 
 
-        $bancos=DB::table('entidads')->where('tipoEntidad_id',1)->where('admincliente_id',$user->admincliente_id)->get();
+        
         $saluds=DB::table('entidads')->where('tipoEntidad_id',2)->where('admincliente_id',$user->admincliente_id)->get();
         $arls=DB::table('entidads')->where('tipoEntidad_id',3)->where('admincliente_id',$user->admincliente_id)->get();
         $pensiones=DB::table('entidads')->where('tipoEntidad_id',4)->where('admincliente_id',$user->admincliente_id)->get();
