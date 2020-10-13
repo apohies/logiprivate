@@ -15,7 +15,7 @@ class CreateEmpleadoClientesTable extends Migration
     {
         Schema::create('empleado_clientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('estado',['activo','desactivo','retirado'])->default('activo');
+            $table->enum('estado',['activo','desactivo','retirado','nuevo'])->default('activo');
             $table->string('cargo')->nullable();
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('admincliente_id');

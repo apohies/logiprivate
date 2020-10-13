@@ -98,6 +98,7 @@ class EmpleadosAdminClienteController extends Controller
         $user->save();
 
         $empleado=new EmpleadoCliente();
+        $empleado->estado="nuevo";
         $empleado->tipoDocumento_id=$request->tipoIdentificacion;
         $empleado->numeroDocumento=$request->numeroIdentificacion;
         $empleado->fechaNacimiento=$request->fechaNacimiento;
@@ -116,11 +117,11 @@ class EmpleadosAdminClienteController extends Controller
         $empleado->save();
 
         $entidadBancaria= new EmpleadoEntidad();
-        $entidaBancaria->empleado_id=$empleado->id;
-        $entidaBancaria->tipoEntidad_id=$request->banco;
-        $entidaBancaria->tipocuenta=$request->tipocuenta;
-        $entidaBancaria->numeroCuenta=$request->numeroCuenta;
-        $entidaBancaria->save();
+        $entidadBancaria->empleado_id=$empleado->id;
+        $entidadBancaria->tipoEntidad_id=$request->banco;
+        $entidadBancaria->tipocuenta=$request->tipocuenta;
+        $entidadBancaria->numeroCuenta=$request->numeroCuenta;
+        $entidadBancaria->save();
 
        return redirect()->route('empleadosadmincliente.createAnexo',$empleado->id);
 

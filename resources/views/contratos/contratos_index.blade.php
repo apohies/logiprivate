@@ -37,10 +37,12 @@
 				<table id="dataTableExample2" class="table table-bordered table-striped table-hover">
 					<thead>
 						<tr>
+							
                             <th>Nombre</th>
                             <th>Tipo </th>
                             <th>Código</th>
-                            <th>Descripción</th>
+							<th>Descripción</th>
+							<th>Clausulas Asociadas</th>
 							
 						
 						
@@ -50,10 +52,16 @@
 					<tbody>
                         @foreach ($contratos as $item)
 						<tr>
+
                                 <td>{{$item->nombreContrato}}</td>
                                 <td>{{$item->nombreTipocontrato}}</td>
                                 <td>{{$item->codigoContrato}}</td>
-                                <td>{{$item->descripcionContrato}}</td>
+								<td>{{$item->descripcionContrato}}</td>
+								<td>
+								<a  class="btn btn-labeled btn-warning m-b-5" href="{{route('contratacion.clausulaContrato',$item->id)}}">
+                                        <span class="btn-label"><i class="glyphicon glyphicon-bookmark"></i></span>Ver clausulas
+                                    </a>
+								</td>
 						
                         </tr>
                         @endforeach

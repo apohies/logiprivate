@@ -32,6 +32,7 @@
         <a href="2" class=material-ripple><i class="material-icons" style="color:#3d3fc4;">business</i> Procesos contractuales<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li><a href="{{route('contratacion.inicio')}}"> Procesos Contractuales</a></li>
+            <li><a href="{{route('contratacion.indexSinasignacion')}}"> Empleado sin Asignación</a></li>
         </ul>
     <li>
 

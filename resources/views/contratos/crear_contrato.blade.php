@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	<div class="panel-body">
-        <form method="POST" action="#">
+    <form id="crearContrato" method="POST" action="{{route('contratacion.storeContrato')}}">
         @csrf
 
         <div class="row">
@@ -40,7 +40,7 @@
 
             <div class="form-group col-md-5">
                 <label for="exampleInputEmail1">Tipo Contrato <span style="color:red">*</span></label>
-                <select class="form-control" required name="tipoContrato_id" required>
+                <select class="form-control"  name="tipoContrato_id" required>
                   <option value="" selected>Opcion</option>
                   @foreach ($tipoContratos as $item)
                       <option value="{{$item->id}}">{{$item->nombreTipocontrato}}</option>
@@ -77,7 +77,10 @@
                                     <tbody>
                                         @foreach ($clausulas as $key => $item)
                                         <tr>
-                                            <td>{{$key+1}}</td>
+                                            <td><div class="checkbox ">
+                                            <input id="checkbox{{$key}}" type="checkbox"  value="{{$item->id}}" onclick="Clicker(this)">
+                                            <label for="checkbox{{$key}}"></label>
+                                                </div></td>
                                             <td>{{$item->nombreClausula}}</td>
                                             <td>{{$item->descripcionCorta}}</td>
                                         
@@ -99,9 +102,71 @@
 
 	</div>
 	<div class="panel-footer">
-        
+        <input type="hidden" id="clausulasSelect" name="clausulas[]" />
+        <button type="submit" class="btn btn-primary">Confirmar</button>
     </form>
 	</div>
 </div>
+
+
+<div class="modal fade" id="advertencia" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h1 class="modal-title">Advertencia</h1>
+            </div>
+            <div class="modal-body">
+                EL contrato debe llevar clausulas.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+             
+            </div>
+        </div>
+    </div>
+</div>
     
+@endsection
+
+@section('scripts')
+
+    <script>
+
+         clausulas=[];
+
+         function Comparador(elemento,comparar){
+            return elemento != comparar;
+        }
+
+        function Clicker(e)
+        {
+          
+        if(e.checked == true)
+        {
+            clausulas.push(parseInt(e.value));
+        }else if(e.checked == false)
+        {
+            filtraje=clausulas.filter(el=>Comparador(el,e.value));
+            clausulas=filtraje
+
+        }
+        
+        }
+
+        $("#crearContrato").submit(function(e){
+
+        if(clausulas.length === 0)
+        {
+        e.preventDefault();
+        $('#advertencia').modal('show');
+        }else{
+            document.getElementById('clausulasSelect').value=clausulas;
+        }
+
+        
+    });
+
+    </script>
+
 @endsection

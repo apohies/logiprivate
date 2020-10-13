@@ -88,13 +88,20 @@ Route::group(['prefix'=>'contratacion','namespace'=>'Contratacion','middleware'=
    route::get('contratos','ContratosController@indexTipocontrato')->name('contratacion.indexTipocontrato');
    route::get('ver/contratos','ContratosController@indexContratos')->name('contratacion.indexContratos');
    route::get('crear/contrato','ContratosController@createContrato')->name('contratacion.createContrato');
-   
-
-
+   route::post('store/contrato','ContratosController@storeContrato')->name('contratacion.storeContrato');
+   route::get('ver/clausulas/{contrato}','ContratosController@clausulaContrato')->name('contratacion.clausulaContrato');
    // clausulas
 
    route::get('clausulas','ContratosController@indexClausulas')->name('contratacion.indexClausulas');
    route::get('crear','ContratosController@createClausula')->name('contratacion.createClausula');
    route::post('store/clausula','ContratosController@storeClausula')->name('contratacion.storeClausula');
+
+
+   // contratacion
+
+   route::get('empleado/sin-asignacion/','ContratacionController@indexSinasignacion')->name('contratacion.indexSinasignacion');
+
    
 });
+
+
