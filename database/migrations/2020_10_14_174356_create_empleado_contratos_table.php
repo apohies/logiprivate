@@ -18,10 +18,7 @@ class CreateEmpleadoContratosTable extends Migration
             $table->unsignedInteger('empleado_id');
             $table->unsignedInteger('unidad_negocio_id');
             $table->unsignedInteger('centro_costo_id');
-            $table->string('fechaInicio');
-            $table->string('fechaFinal')->nullable();
             $table->enum('estado',['activo','inactivo','licencia']);
-            $table->string('salario');
             $table->timestamps();
 
             $table->foreign('empleado_id')->references('id')->on('empleado_clientes');
